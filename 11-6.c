@@ -1,11 +1,12 @@
-#include"contact.h"
+#include"contact11-6.h"
+
 void menu(){
-	printf("*****************************\n");
-	printf("***1.add     2.del    ******\n");
-	printf("***3.search  4.modify ******\n");
-	printf("***5.show    6.empty  ******\n");
-	printf("***7.sort    0.exit   ******\n");
-	printf("****************************\n");
+	printf("***************************\n");
+	printf("****1.add     2.del   *****\n");
+	printf("****3.search  4.modify*****\n");
+	printf("****5.show    6.empty *****\n");
+	printf("****7.sort    0.exit  *****\n");
+	printf("***************************\n");
 }
 enum option{
 	EXIT,
@@ -13,21 +14,21 @@ enum option{
 	DEL,
 	SEARCH,
 	MODIFY,
-	SHOW,
+	SHOW, 
 	EMPTY,
 	SORT
 };
 
-
 int main(){
-	//创建通讯录
-	Contact con[MAX] = { 0 };
 	int input = 0;
+	Contact con= { 0 };
+	init_contact(&con);
 	do{
 		menu();
-		printf("请输入选择：\n");
+		printf("请选择：");
 		scanf("%d", &input);
-		switch (input){
+		switch (input)
+		{
 		case ADD:
 			add_contact(&con);
 			break;
@@ -47,18 +48,16 @@ int main(){
 			empty_contact(&con);
 			break;
 		case SORT:
-			sort_byname_contact(&con);
+			sort_contact(&con);
 			break;
 		case EXIT:
 			printf("退出通讯录!\n");
 			break;
 		default:
-			printf("选择有误\n");
+			printf("选择有误!");
 			break;
 		}
-
 	} while (input);
 
-	system("pause");
 	return 0;
 }
